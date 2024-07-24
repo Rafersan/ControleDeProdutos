@@ -1,0 +1,46 @@
+﻿@page
+@model LoginAppAuth.Pages.Logged.Products.EditModel
+@{
+}
+
+<div class="row">
+    <div>
+        <h2 class="text-center mb-5">Editar Produto</h2>
+        @if (Model.errorMessage.Length > 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@Model.errorMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (Model.successMessage.Length > 0)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@Model.successMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        <form method="post" style="max-width:500px" class="m-auto d-flex flex-column justify-content-center align-items-center" enctype="multipart/form-data">
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-row">
+                    <label>ID:&nbsp</label>
+                    <input readonly class="form-control-plaintext p-0" value="@Model.Product.Id" />
+                </div>
+                
+                <label>Título:</label>
+                <input asp-for="ProductInfo.Title" placeholder="Título do produto" />
+                <span asp-validation-for="ProductInfo.Title" class="text-danger"></span>
+                <label>Nome:</label>
+                <input asp-for="ProductInfo.Name" placeholder="Nome do produto" />
+                <span asp-validation-for="ProductInfo.Name" class="text-danger"></span>
+                <label>Descrição:</label>
+                <textarea asp-for="ProductInfo.Description" placeholder="Descrição do produto"></textarea>
+                <span asp-validation-for="ProductInfo.Description" class="text-danger"></span>
+                <label>Preço:</label>
+                <input asp-for="ProductInfo.Price" placeholder="Preço do produto" />
+                <span asp-validation-for="ProductInfo.Price" class="text-danger"></span>
+                <button class="mt-2 btn btn-primary btn-sm">Editar</button>
+            </div>
+        </form>
+    </div>
+</div>

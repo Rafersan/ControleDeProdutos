@@ -1,0 +1,42 @@
+﻿@page
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model IndexModel
+@{
+}
+
+<h2 class="text-center">Lista de produtos</h2>
+
+<div>
+    <div>
+        <a class="btn btn-primary" href="@Configuration["AppPages:ProductsCreate"]">Novo Produto</a>
+    </div>
+    <div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model.Products){
+            <tr>
+                <td>@product.Title</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/logged/products/edit?id=@product.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/logged/products/delete?id=@product.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
